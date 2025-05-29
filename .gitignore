@@ -1,0 +1,20 @@
+# === FRONTEND ===
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.vite/
+frontend/.DS_Store
+frontend/tsconfig.tsbuildinfo
+
+# === BACKEND ===
+backend/node_modules/
+backend/.env
+backend/dist/
+backend/.DS_Store
+
+# Common
+logs
+*.log
+.vscode/
+.idea/
