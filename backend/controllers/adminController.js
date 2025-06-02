@@ -41,43 +41,65 @@ exports.requestResetPassword = async(req, res) =>{
   const { email } = req.body
 
   try {
-    const admin = Admin.findOne({ email})
-    if(!admin) {
-      res.status(200).json({ message: "if the email exists, a reset link has been sent."})
+    const admin = await Admin.findOne({ email });
+    if (!admin) {
+      // Always return generic message for security
+      return res.status(200).json({ message: "If the email exists, a reset link has been sent." });
     }
 
-    const resetToken = crypto.randomBytes(32).toString("hex")
-    const tokenExpiry = Date.now() + 3600000
+    // ✅ Generate JWT token instead of random string
+    const resetToken = jwt.sign(
+      { id: admin._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
 
-    admin.resetToken = resetToken
-    admin.resetTokenExpiry = tokenExpiry
-
-    await admin.save()
+    const resetUrl = `http://localhost:5173/reset-password/${resetToken}`;
 
     const transporter = nodemailer.createTransport({
       service: "Gmail",
-      auth:{
+      auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
-      }
+      },
+    });
 
-    })
-
-    const resetUrl = `http://localhost:5173/reset-password/${resetToken}`
     const mailOptions = {
       to: admin.email,
-      subject: "Admin password Reset",
-      html:`
+      subject: "Admin Password Reset",
+      html: `
         <p>You requested a password reset</p>
-        <p><a href="${resetUrl}">Click here to reset</a></p>
+        <p><a href="${resetUrl}">Click here to reset your password</a></p>
         <p>This link will expire in 1 hour.</p>
-      `
-    }
+      `,
+    };
 
-    await transporter.sendMail(mailOptions)
-    res.status(200).json({ message: "Reset link sent"})
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: "Reset link sent" });
   } catch (error) {
-    console.error("Reset error", err)
-    res.status(500).json({ error: "Something went wrong "})
+    console.error("Reset error", error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+}
+
+exports.resetPassword = async(req, res) =>{
+  const { token, newPassword } = req.body
+
+  if(!token) return res.status(400).json({ message: "Token missing"})
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    const admin = await Admin.findById(decoded.id)
+
+    if(!admin) return res.status(404).json({ message: "Admin not found"})
+
+    const salt = await bcrypt.genSalt(10)
+    admin.password = await bcrypt.hash(newPassword, salt)
+    await admin.save()
+    res.status(200).json({ message: "password reset successfull"})
+
+  } catch (error) {
+    console.error(error)
+    res.status(400).json({ message: "invalid or expired token "})
   }
 }

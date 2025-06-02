@@ -5,6 +5,7 @@ import HomePage from './Pages/Home';
 import Footer from './Components/Footer';
 import GalleryPage from './Pages/Gallery';
 import AdminPanel from './Pages/AdminPanel';
+import ResetPasswordPage from './Pages/ResetPasswordPage';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
         />
         <Route path='/gallery' element={<GalleryPage/>}/>
         <Route path='/admin' element={<AdminPanel />} />
+        <Route path='/reset-password/:token' element={<ResetPasswordPage/>} />
       </Routes>
       <Footer />
     </div>
