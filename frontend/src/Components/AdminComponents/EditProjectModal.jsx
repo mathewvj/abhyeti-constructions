@@ -1,4 +1,4 @@
-import React from 'react';
+import './EditProject.css'
 
 const EditProjectModal = ({
   editedData,

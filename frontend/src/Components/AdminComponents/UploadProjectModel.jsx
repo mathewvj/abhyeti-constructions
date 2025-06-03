@@ -1,4 +1,5 @@
 import React from 'react';
+import './UploadProject.css'
 
 const UploadProjectModal = ({ formData, onChange, onFileChange, onClose, onSubmit }) => {
   return (

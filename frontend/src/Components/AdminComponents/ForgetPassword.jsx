@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import './ForgetPassword.css'
 
 const ForgetPassword = ({ onClose }) =>{
     const [ email, setEmail ] = useState("")

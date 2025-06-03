@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ForgetPassword from './ForgetPassword';
+import './LoginForm.css'
 
 const LoginForm = ({ onLogin }) => {
     const [showForgotPassword, setShowForgotPassword ] = useState(false)
