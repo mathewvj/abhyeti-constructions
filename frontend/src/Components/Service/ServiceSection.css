@@ -1,0 +1,128 @@
+.service-section {
+  padding: 4rem 0; /* py-16 */
+  background-color: #ffffff; /* bg-white */
+}
+
+.container {
+  max-width: 1120px; /* max-w-7xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem; /* sm:px-6 */
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem; /* lg:px-8 */
+    padding-right: 2rem;
+  }
+}
+
+.service-header {
+  text-align: center;
+  margin-bottom: 3rem; /* mb-12 */
+}
+
+.service-title {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 700;
+  color: #111827; /* gray-900 */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+@media (min-width: 768px) {
+  .service-title {
+    font-size: 2.25rem; /* md:text-4xl */
+  }
+}
+
+.service-subtitle {
+  font-size: 1.125rem; /* text-lg */
+  color: #4b5563; /* gray-600 */
+  max-width: 42rem; /* max-w-2xl */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem; /* gap-8 */
+}
+
+@media (min-width: 768px) {
+  .service-grid {
+    grid-template-columns: repeat(3, 1fr); /* md:grid-cols-3 */
+  }
+}
+
+.service-card {
+  background-color: #ffffff;
+  padding: 2rem; /* p-8 */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* shadow-lg */
+  border: 1px solid #f3f4f6; /* border-gray-100 */
+  transition: box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15); /* hover:shadow-xl */
+}
+
+.service-icon-wrapper {
+  background-color: #dbeafe; /* bg-blue-100 */
+  width: 4rem; /* w-16 */
+  height: 4rem; /* h-16 */
+  border-radius: 0.5rem; /* rounded-lg */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.service-icon {
+  height: 2rem; /* h-8 */
+  width: 2rem; /* w-8 */
+  color: #2563eb; /* text-blue-600 */
+}
+
+.service-card-title {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600;
+  color: #111827; /* text-gray-900 */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+.service-card-desc {
+  color: #4b5563; /* text-gray-600 */
+}
+
+.service-learn-more-btn {
+  margin-top: 1rem; /* mt-4 */
+  color: #2563eb; /* text-blue-600 */
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+}
+
+.service-learn-more-btn:hover {
+  color: #1d4ed8; /* hover:text-blue-700 */
+}
+
+.service-chevron {
+  margin-left: 0.25rem; /* ml-1 */
+  height: 1rem; /* h-4 */
+  width: 1rem; /* w-4 */
+}

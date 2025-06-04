@@ -295,7 +295,10 @@ const AdminPanel = () => {
                       </div>
                     )}
 
-                    {showModal && (
+                   
+                  </div>
+                )))}
+               {showModal && (
                       <EditProjectModal
                         editedData={editedData}
                         imagesToKeep={imagesToKeep}
@@ -305,10 +308,8 @@ const AdminPanel = () => {
                         onClose={() => setShowModal(false)}
                         onUpdate={handleUpdateSubmit}
                       />
-                    )}
-                  </div>
-                ))
-              )}
+                )}
+
               {totalPages > 1 && (
                 <div className="pagination">
                   <button

@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom"
-import Navigation from './Components/Navigation';
+import Navigation from './Components/Navigation/Navigation';
 import HomePage from './Pages/Home';
-import Footer from './Components/Footer';
+import Footer from './Components/Footer/Footer';
 import GalleryPage from './Pages/Gallery';
 import AdminPanel from './Pages/AdminPanel';
 import ResetPasswordPage from './Pages/ResetPasswordPage';

@@ -1,0 +1,341 @@
+/* Navigation.css - Responsive Navigation Styles */
+
+/* Base Navigation Styles */
+.nav-shadow {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.nav-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+  transition: height 0.3s ease;
+}
+
+/* Logo Styles */
+.nav-left {
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+  letter-spacing: -0.025em;
+  transition: all 0.3s ease;
+}
+
+.logo-text::before {
+  content: "🏗️ Abhyeti ";
+  color: #ff7e0d;
+}
+
+/* Desktop Menu Styles */
+.menu-desktop {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.menu-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+.menu-button:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+  transform: translateY(-1px);
+}
+
+.menu-button:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.menu-button.active {
+  color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.menu-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background-color: #2563eb;
+  border-radius: 1px;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: #374151;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-toggle:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+.menu-toggle:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* Mobile Menu Styles */
+.menu-mobile {
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  padding: 0.5rem 1rem;
+  animation: slideDown 0.3s ease-out;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.menu-mobile-button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #374151;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 0.25rem;
+  position: relative;
+}
+
+.menu-mobile-button:hover {
+  background-color: #f9fafb;
+  color: #111827;
+  padding-left: 1.25rem;
+}
+
+.menu-mobile-button:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.menu-mobile-button.active {
+  color: #2563eb;
+  background-color: #eff6ff;
+  border-left: 4px solid #2563eb;
+  padding-left: 1.25rem;
+}
+
+.menu-mobile-button:last-child {
+  margin-bottom: 0;
+}
+
+/* Animation Keyframes */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 400px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Breakpoints */
+
+/* Small devices (phones, 576px and up) */
+@media (min-width: 576px) {
+  .nav-container {
+    padding: 0 1.5rem;
+  }
+  
+  .logo-text {
+    font-size: 1.75rem;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .nav-flex {
+    height: 5rem;
+  }
+  
+  .menu-desktop {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .menu-button {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+  
+  .logo-text {
+    font-size: 2rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .nav-container {
+    padding: 0 2rem;
+  }
+  
+  .menu-desktop {
+    gap: 1rem;
+  }
+  
+  .menu-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .logo-text {
+    font-size: 2.25rem;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .nav-flex {
+    height: 5.5rem;
+  }
+  
+  .menu-desktop {
+    gap: 1.25rem;
+  }
+  
+  .menu-button {
+    padding: 0.875rem 1.75rem;
+    font-size: 1.0625rem;
+  }
+}
+
+/* Utility Classes */
+.md\:hidden {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .md\:hidden {
+    display: block;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus Visible Support */
+@supports selector(:focus-visible) {
+  .menu-button:focus:not(:focus-visible),
+  .menu-toggle:focus:not(:focus-visible),
+  .menu-mobile-button:focus:not(:focus-visible) {
+    outline: none;
+  }
+  
+  .menu-button:focus-visible,
+  .menu-toggle:focus-visible,
+  .menu-mobile-button:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .nav-shadow {
+    background: white;
+    border-bottom: 2px solid #000;
+  }
+  
+  .menu-button:hover,
+  .menu-mobile-button:hover {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .menu-mobile {
+    animation: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .nav-shadow {
+    position: static;
+    box-shadow: none;
+    border-bottom: 1px solid #000;
+    background: white;
+  }
+  
+  .menu-mobile,
+  .menu-toggle {
+    display: none;
+  }
+  
+  .menu-desktop {
+    display: flex;
+  }
+}

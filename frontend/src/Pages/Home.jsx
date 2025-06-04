@@ -1,8 +1,8 @@
-import AboutSection from "../Components/AboutSection";
-import ContactSection from "../Components/ContactSection";
-import FaqSection from "../Components/FaqSection";
-import HeroSection from "../Components/HeroSection";
-import ServiceSection from "../Components/ServiceSection";
+import AboutSection from "../Components/About/AboutSection";
+import ContactSection from "../Components/Contact/ContactSection";
+import FaqSection from "../Components/Faq/FaqSection";
+import HeroSection from "../Components/Hero/HeroSection";
+import ServiceSection from "../Components/Service/ServiceSection";
 
 const HomePage = ({ aboutRef, servicesRef, contactRef, faqRef }) => {
   return (
