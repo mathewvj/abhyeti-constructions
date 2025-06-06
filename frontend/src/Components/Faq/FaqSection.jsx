@@ -7,20 +7,28 @@ const FaqSection = () => {
 
   const faqs = [
     {
-      question: 'How long does a typical construction project take?',
-      answer: 'Project timelines vary based on scope and complexity. Residential projects typically take 6-12 months, while commercial projects may take 12-24 months. We provide detailed timelines during project planning.'
+      question: 'What types of construction services do you offer?',
+      answer: 'We specialize in road construction, bridge development, and building contracts—including both residential and commercial projects.'
     },
     {
-      question: 'Do you provide free estimates?',
-      answer: 'Yes, we offer free consultations and estimates for all projects. Our team will assess your requirements and provide a detailed cost breakdown with no obligation.'
+      question: 'Where is your company based?',
+      answer: 'Abhyeti Construction is proudly based in Goa, and we undertake projects across the region.'
     },
     {
-      question: 'Are you licensed and insured?',
-      answer: 'Absolutely. Abhyeti Constructions is fully licensed, bonded, and insured. We maintain all necessary certifications and comply with local building codes and regulations.'
+      question: 'How long does a typical project take?',
+      answer: 'Project timelines vary depending on size and scope. After an initial consultation, we provide a clear estimate and project schedule to keep everything on track.'
     },
     {
-      question: 'What is your warranty policy?',
-      answer: 'We provide comprehensive warranties on all our work. Structural elements typically carry a 10-year warranty, while finishes and fixtures have a 1-2 year warranty period.'
+      question: ' Can I see examples of your previous work?',
+      answer: 'Absolutely! We’re happy to share our portfolio and completed projects. You can also check our Gallery page for photos.'
+    },
+    {
+      question: 'How do I get a quote for my project?',
+      answer: 'You can contact us via phone, email, or our website form. We’ll schedule a site visit or discussion and provide a free, detailed quotation.'
+    },
+    {
+      question: 'What sets Abhyeti Construction apart?',
+      answer: 'We blend local experience, reliable project management, and a focus on quality materials to deliver trusted results—on time and within budget.'
     }
   ];
 

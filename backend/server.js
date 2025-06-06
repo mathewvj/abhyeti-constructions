@@ -6,6 +6,7 @@ const path = require('path')
 const adminRoutes = require('./routes/adminRoutes')
 const auth = require('./middleware/auth')
 const projectRoutes = require('./routes/protectedRoutes')
+const contactRoutes = require('./routes/contactRoute')
 
 dotenv.config()
 const app = express()
@@ -13,7 +14,7 @@ const app = express()
 //middleware
 app.use(cors())
 app.use(express.json())
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 //routes
 
@@ -30,6 +31,7 @@ app.get('/api/protected',auth, (req, res) =>{
 })
 
 app.use('/api/projects', projectRoutes)
+app.use('/api/contact', contactRoutes)
 
 
 

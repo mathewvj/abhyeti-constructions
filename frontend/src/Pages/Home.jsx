@@ -8,7 +8,7 @@ const HomePage = ({ aboutRef, servicesRef, contactRef, faqRef }) => {
   return (
     <div>
       <div>
-        <HeroSection />
+        <HeroSection aboutRef={aboutRef} />
       </div>
 
       <div ref={aboutRef}>

@@ -1,5 +1,5 @@
-const { error } = require('console')
 const Project = require('../models/Project')
+const cloudinary = require('../config/cloudinary')
 const fs = require('fs')
 const path = require('path')
 
@@ -11,18 +11,19 @@ exports.uploadProject = async (req, res) =>{
             return res.status(400).json({ message: 'At least one image is required'})
         }
 
-        const imagePaths = req.files.map(file => file.filename)
+        const imageUrls = req.files.map(file => file.path)
 
         const newProject = new Project({
             name,
             description,
             category,
-            images: imagePaths
+            images: imageUrls
         })
 
         await newProject.save()
         res.status(201).json({ message: 'project updated', project: newProject})
     } catch (error) {
+        console.error('Upload error',error)
         res.status(500).json({ message:'Upload failed', error: error.message})
     }
 }
@@ -41,16 +42,18 @@ exports.deleteProject = async(req,res) =>{
         const project = await Project.findById(req.params.id)
         if(!project) return res.status(404).json({ message: 'Project not found'})
 
-        project.images.forEach(imgPath =>{
-            const filePath = path.join(__dirname, '../uploads', imgPath)
-            fs.unlink(filePath, err =>{
-                if(err) console.error('falied to delete image', err)
-            })
-        })
+        for(const imgUrl of project.images){
+            const segments = imgUrl.split('/')
+            const filename = segments.pop()
+            const publicId = segments.slice(segments.indexOf('upload')+ 1).join('/') + '/' + filename.split('.')[0]
+
+            await cloudinary.uploader.destroy(publicId)
+        }
 
         await Project.findByIdAndDelete(req.params.id)
         res.json({ message: 'Project deleted successfully'})
     } catch (error) {
+        console.error('Delete error',error)
         res.status(500).json({ message:'Error deleting project', error: error.message})
     }
 }
@@ -67,29 +70,38 @@ exports.updateProject = async( req, res ) =>{
         const project = await Project.findById(req.params.id);
         if (!project) return res.status(404).json({ message: 'Project not found' });
 
-        const newImagePaths = req.files?.map(file => file.filename) || [];
-        const totalImages = keepImages.length + newImagePaths.length;
+        //upload new images to Cloudinary
 
-        if (totalImages > 3) {
-            newImagePaths.forEach(img => {
-                const fullPath = path.join(__dirname, '../uploads', img);
-                fs.unlink(fullPath, () => {});
-            });
-            return res.status(400).json({ message: 'Cannot exceed 3 images per project' });
+        const newImageUrls = []
+
+        if(req.files && req.files.length > 0) {
+            for(const file of req.files){
+                const result = await cloudinary.uploader.upload(file.path,{
+                    folder: 'abhyeti-projects',
+                })
+                newImageUrls.push(result.secure_url)
+            }
         }
 
-        const imagesToDelete = project.images.filter(img => !keepImages.includes(img));
-        imagesToDelete.forEach(img => {
-            const fullPath = path.join(__dirname, '../uploads', img);
-            fs.unlink(fullPath, err => {
-                if (err) console.error('Error deleting image', err);
-            });
-        });
+        const totalImages = keepImages.length + newImageUrls.length
+        if(totalImages > 3){
+            for(const url of newImageUrls){
+                const publicId = getPublicIdFromUrl(url)
+                await cloudinary.uploader.destroy(publicId)
+            }
+            return res.status(400).json({ message: 'Cannot upload more than 3 images'})
+        }
+
+        const imagesToDelete = project.images.filter(img => !keepImages.includes(img))
+        for(const imgUrl of imagesToDelete){
+            const publicId = getPublicIdFromUrl(imgUrl)
+            await cloudinary.uploader.destroy(publicId)
+        }
 
         project.name = name;
         project.category = category;
         project.description = description;
-        project.images = [...keepImages, ...newImagePaths];
+        project.images = [...keepImages, ...newImageUrls];
 
         await project.save();
         res.json({ message: "Project updated successfully", project });
@@ -98,4 +110,11 @@ exports.updateProject = async( req, res ) =>{
         console.error(error);
         res.status(500).json({ message: "Error updating project", error });
     }
+}
+
+function getPublicIdFromUrl(url){
+    const parts = url.split('/')
+    const filename = parts.pop()
+    const publicId = parts.slice(parts.indexOf('upload') +1).join('/') + '/' + filename.split('.')[0]
+    return publicId    
 }

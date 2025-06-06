@@ -6,9 +6,11 @@ const ForgetPassword = ({ onClose }) =>{
     const [ email, setEmail ] = useState("")
     const [ message, setMessage ] = useState(null)
     const [ error, setError ] = useState(null)
+    const [isUploading, setIsUploading ] = useState(false)
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
+        setIsUploading(true)
         try {
             await axios.post("http://localhost:5000/api/admin/request-reset-password",{ email })
             setMessage("If the email exists, a reset link has been sent")
@@ -16,6 +18,8 @@ const ForgetPassword = ({ onClose }) =>{
         } catch (error) {
             setError("Failed to send reset link. Please try again later.")
             setMessage(null)
+        } finally{
+          setIsUploading(false)
         }
     }
 
@@ -33,7 +37,7 @@ const ForgetPassword = ({ onClose }) =>{
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <button type="submit">Send Reset Link</button>
+        <button type="submit" disabled={isUploading}>{isUploading ? <span className='spinner'></span> : "Send Reset Link"}</button>
       </form>
     </div>
     )

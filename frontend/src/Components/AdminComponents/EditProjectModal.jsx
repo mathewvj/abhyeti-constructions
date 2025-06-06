@@ -7,7 +7,8 @@ const EditProjectModal = ({
   onImageDelete,
   onImageChange,
   onClose,
-  onUpdate
+  onUpdate,
+  isUploading
 }) => {
   return (
     <div className="modal-overlay">
@@ -45,7 +46,7 @@ const EditProjectModal = ({
             {imagesToKeep.map((img, idx) => (
               <div key={idx} style={{ position: 'relative' }}>
                 <img
-                  src={`http://localhost:5000/uploads/${img}`}
+                  src={img}
                   alt="preview"
                   className="project-image"
                 />
@@ -69,7 +70,7 @@ const EditProjectModal = ({
             className="file-input"
           />
 
-          <button type="submit" className="btn btn-primary">Update</button>
+          <button type="submit" className="btn btn-primary" disabled={isUploading}>{isUploading ? <span className='spinner'></span> : "Update Project"}</button>
           <button type="button" className="btn btn-secondary" onClick={onClose}>Cancel</button>
         </form>
       </div>

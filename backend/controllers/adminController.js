@@ -19,22 +19,7 @@ exports.loginAdmin = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
-
-exports.devLogin = (req, res) => {
-  const { devKey } = req.body;
-
-  if (devKey !== process.env.DEV_SECRET_KEY) {
-    return res.status(403).json({ message: 'Unauthorized' });
-  }
-
-  const token = jwt.sign(
-    { adminId: 'dev-access', role: 'developer' },
-    process.env.JWT_SECRET,
-    { expiresIn: '1h' }
-  );
-
-  res.json({ token });
-}; 
+ 
 
 exports.requestResetPassword = async(req, res) =>{
   const { email } = req.body

@@ -14,9 +14,9 @@
   /* Background Image - Replace with your construction image */
   background-image: linear-gradient(
     135deg,
-    rgba(37, 99, 235, 0.8) 0%,
-    rgba(59, 130, 246, 0.6) 50%,
-    rgba(37, 99, 235, 0.9) 100%
+    rgba(26, 26, 25, 0.8) 0%,
+    rgba(255, 170, 0, 0.585) 50%,
+    rgba(13, 13, 13, 0.825) 100%
   ),
   url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
   
@@ -105,7 +105,7 @@
   font-size: 1.125rem;
   font-weight: 600;
   color: white;
-  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, #ebac25 0%, #f6c73b 100%);
   border: none;
   border-radius: 0.75rem;
   cursor: pointer;
@@ -138,7 +138,7 @@
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
-  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+  background: linear-gradient(135deg, #d8a31d 0%, #eb8f25 100%);
 }
 
 .btn-primary:active {
@@ -221,8 +221,6 @@
     transform: scale(1.05);
   }
 }
-
-/* Responsive Design */
 
 /* Small devices (phones, up to 576px) */
 @media (max-width: 575px) {
@@ -460,7 +458,7 @@
 }
 
 /* High DPI Screens */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+/* @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .hero-section {
     background-image: linear-gradient(
       135deg,
@@ -470,7 +468,7 @@
     ),
     url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=4140&q=80');
   }
-}
+} */
 
 /* Landscape Orientation on Mobile */
 @media (max-width: 767px) and (orientation: landscape) {
@@ -522,7 +520,7 @@
 }
 
 /* Accessibility */
-@media (prefers-reduced-motion: reduce) {
+/* @media (prefers-reduced-motion: reduce) {
   .hero-section *,
   .hero-section *::before,
   .hero-section *::after {
@@ -534,10 +532,10 @@
   .hero-section {
     background-attachment: scroll;
   }
-}
+} */
 
 /* High Contrast Mode */
-@media (prefers-contrast: high) {
+/* @media (prefers-contrast: high) {
   .hero-overlay {
     background: rgba(0, 0, 0, 0.8);
   }
@@ -551,10 +549,10 @@
     background: transparent;
     border: 2px solid #fff;
   }
-}
+} */
 
 /* Print Styles */
-@media print {
+/* @media print {
   .hero-section {
     background: white;
     color: black;
@@ -579,4 +577,4 @@
   .hero-buttons {
     display: none;
   }
-}
+} */

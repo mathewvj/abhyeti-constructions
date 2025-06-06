@@ -4,7 +4,7 @@ import LoginForm from "../Components/AdminComponents/LoginForm";
 import UploadProjectModal from "../Components/AdminComponents/UploadProjectModel";
 import EditProjectModal from "../Components/AdminComponents/EditProjectModal";
 import "./AdminPanel.css"; // Import the CSS file
-import { LogOut } from "lucide-react";
+import { Flag, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const AdminPanel = () => {
@@ -18,6 +18,7 @@ const AdminPanel = () => {
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [activeTab, setActiveTab] = useState("road");
   const [editedData, setEditedData] = useState(null);
+  const [isUploading, setIsUploading] = useState(false)
   const [formData, setFormData] = useState({
     service: "road",
     projectName: "",
@@ -97,6 +98,7 @@ const AdminPanel = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsUploading(true)
     const data = new FormData();
     data.append("category", formData.service);
     data.append("name", formData.projectName);
@@ -126,6 +128,8 @@ const AdminPanel = () => {
       setShowUploadModal(false);
     } catch (error) {
       alert("upload failed");
+    }finally{
+      setIsUploading(false)
     }
   };
 
@@ -151,6 +155,7 @@ const AdminPanel = () => {
 
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
+    setIsUploading(true)
     const data = new FormData();
     data.append("category", editedData.service);
     data.append("name", editedData.projectName);
@@ -176,12 +181,17 @@ const AdminPanel = () => {
     } catch (error) {
       alert("Failed to update projects");
       console.log(error);
+    }finally{
+      setIsUploading(false)
     }
   };
 
   const handleDeleteProject = async (id) => {
-    if (!window.confirm("Are you sure, You want to delete this project?"))
+    setIsUploading(true)
+    if (!window.confirm("Are you sure, You want to delete this project?")){
+      setIsUploading(false);
       return;
+    }
 
     try {
       await axios.delete(`http://localhost:5000/api/projects/${id}`, {
@@ -192,6 +202,8 @@ const AdminPanel = () => {
       fetchProjects();
     } catch (error) {
       alert("Failed to delete projects");
+    }finally{
+      setIsUploading(false)
     }
   };
 
@@ -234,6 +246,7 @@ const AdminPanel = () => {
               onFileChange={handleImageChange}
               onClose={() => setShowUploadModal(false)}
               onSubmit={handleSubmit}
+              isUploading={isUploading}
             />
           )}
 
@@ -277,8 +290,9 @@ const AdminPanel = () => {
                       <button
                         className="btn btn-danger"
                         onClick={() => handleDeleteProject(project._id)}
+                        disabled={isUploading}
                       >
-                        Delete
+                       {isUploading ? <span className='spinner'></span> : "Delete"}
                       </button>
                     </div>
                     <p className="project-description">{project.description}</p>
@@ -287,7 +301,7 @@ const AdminPanel = () => {
                         {project.images.map((url, idx) => (
                           <img
                             key={idx}
-                            src={`http://localhost:5000/uploads/${url}`}
+                            src={`${url}`}
                             alt={`${project.name} - Image ${idx + 1}`}
                             className="project-image"
                           />
@@ -307,6 +321,7 @@ const AdminPanel = () => {
                         onImageChange={handleUpdateImageChange}
                         onClose={() => setShowModal(false)}
                         onUpdate={handleUpdateSubmit}
+                        isUploading={isUploading}
                       />
                 )}
 

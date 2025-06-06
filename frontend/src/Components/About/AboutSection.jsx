@@ -3,27 +3,24 @@ import "./AboutSection.css";
 
 const AboutSection = () => {
   return (
-    <section className="about-section">
+    <section className="about-section" id="about-section">
       <div className="container">
         <div className="about-grid">
           <div className="about-text">
             <h2 className="about-title">About Abhyeti Constructions</h2>
             <p className="about-paragraph">
-              With over a decade of experience in the construction industry, Abhyeti Constructions 
-              has been at the forefront of delivering exceptional building solutions that combine 
-              innovation with traditional craftsmanship.
+              Welcome to <strong>Abhyeti Construction Private Limited</strong>, a trusted name in infrastructure development based in the heart of Goa. With over 2 years of experience, we specialize in delivering high-quality Road, Bridge, and Building construction projects that meet both modern standards and local needs.
             </p>
             <p className="about-paragraph">
-              Our commitment to quality, safety, and customer satisfaction has made us a trusted 
-              partner for residential, commercial, and infrastructure projects across the region.
+              At Abhyeti, we are driven by a passion for building not just structures, but strong foundations for communities. Whether it's a durable road, a reliable bridge, or a safe and functional building, our work reflects our commitment to quality, safety, and timely delivery.
             </p>
             <div className="about-stats">
-              <div className="about-stat-item">
+              {/* <div className="about-stat-item">
                 <div className="about-stat-number">500+</div>
                 <div className="about-stat-label">Projects Completed</div>
-              </div>
+              </div> */}
               <div className="about-stat-item">
-                <div className="about-stat-number">15+</div>
+                <div className="about-stat-number">2+</div>
                 <div className="about-stat-label">Years Experience</div>
               </div>
             </div>

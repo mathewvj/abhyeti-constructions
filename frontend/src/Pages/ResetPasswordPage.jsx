@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import './ResetPassword.css'
 
 const ResetPassword = () => {
   const { token } = useParams();
@@ -9,11 +10,14 @@ const ResetPassword = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [isUploading, setIsUploading ]= useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsUploading(true)
     if (password !== confirmPassword) {
       setError("Passwords do not match");
+      setIsUploading(false)
       return;
     }
 
@@ -30,6 +34,8 @@ const ResetPassword = () => {
     } catch (err) {
       console.error(err);
       setError("Reset failed. Invalid or expired token.");
+    } finally{
+      setIsUploading(false)
     }
   };
 
@@ -52,7 +58,7 @@ const ResetPassword = () => {
           required
         />
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit">Reset Password</button>
+        <button type="submit" disabled={isUploading}>{isUploading ? <span className='spinner'></span> : "Reset Password"}</button>
       </form>
     </div>
   );

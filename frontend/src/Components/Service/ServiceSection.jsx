@@ -1,22 +1,24 @@
-import { Building, Users, Award, ChevronRight } from "lucide-react";
+import { Route  , Building, Construction  , ChevronRight } from "lucide-react";
 import "./ServiceSection.css";
+import { useNavigate } from "react-router-dom";
 
 const ServiceSection = () => {
+  const navigate = useNavigate()
   const services = [
     {
+      icon: Route ,
+      title: 'Road Construction',
+      description: 'We build strong, long-lasting roads that connect communities and enable smooth transportation across Goa and beyond.'
+    },
+    {
       icon: Building,
-      title: 'Residential Construction',
-      description: 'Custom homes, apartments, and residential complexes built with precision and care.'
+      title: 'Building Construction',
+      description: 'From homes to commercial spaces, we construct reliable, safe, and modern buildings tailored to every need.'
     },
     {
-      icon: Users,
-      title: 'Commercial Projects',
-      description: 'Office buildings, retail spaces, and commercial facilities designed for success.'
-    },
-    {
-      icon: Award,
-      title: 'Infrastructure Development',
-      description: 'Roads, bridges, and public infrastructure projects that serve communities.'
+      icon: Construction  ,
+      title: 'Bridge Construction',
+      description: 'Our bridge projects stand for strength and stability—designed to endure and built to connect places and people safely.'
     }
   ];
 
@@ -40,7 +42,7 @@ const ServiceSection = () => {
                 </div>
                 <h3 className="service-card-title">{service.title}</h3>
                 <p className="service-card-desc">{service.description}</p>
-                <button className="service-learn-more-btn">
+                <button className="service-learn-more-btn" onClick={()=> navigate("/gallery")}>
                   Learn More <ChevronRight className="service-chevron" />
                 </button>
               </div>

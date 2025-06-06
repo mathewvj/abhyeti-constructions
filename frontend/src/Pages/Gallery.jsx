@@ -12,10 +12,11 @@ const GalleryPage = () => {
   const [carouselIndexes, setCarouselIndexes ] = useState({})
 
    const categorizedProjects = {
-    road: projects.filter((p) => p.category === 'road'),
-    Building: projects.filter((p) => p.category === 'building'),
-    bridge: projects.filter((p) => p.category === 'bridge')
-  }
+    road: projects.filter((p) => p.category === "road"),
+    building: projects.filter((p) => p.category === "building"),
+    bridge: projects.filter((p) => p.category === "bridge"),
+  };
+  console.log("building projects", categorizedProjects.building)
 
   const projectsPerPage = 4
   const projectsForCurrentTab = categorizedProjects[activeTab] || []
@@ -26,7 +27,8 @@ const GalleryPage = () => {
     indexOfFirstProject,
     indexOfLastProject
   );
-  const totalPages = Math.ceil(projectsForCurrentTab.length / projectsPerPage)
+  const totalPages = Math.ceil(projectsForCurrentTab.length / projectsPerPage);
+
   useEffect(()=>{
     fetchProjects()
     setCurrentPage(1)
@@ -35,7 +37,6 @@ const GalleryPage = () => {
   const fetchProjects = async() =>{
     try {
       const res = await axios.get("http://localhost:5000/api/projects")
-
       setProjects(res.data)
     } catch (error) {
       console.error("failed to fetch projects", error)
@@ -67,7 +68,7 @@ const GalleryPage = () => {
   }
 
   const getImageSrc = (url) => {
-    return `http://localhost:5000/uploads/${url}`
+    return url
   }
 
   return (

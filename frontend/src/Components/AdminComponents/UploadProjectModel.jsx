@@ -1,7 +1,7 @@
 import React from 'react';
 import './UploadProject.css'
 
-const UploadProjectModal = ({ formData, onChange, onFileChange, onClose, onSubmit }) => {
+const UploadProjectModal = ({ formData, onChange, onFileChange, onClose, onSubmit, isUploading }) => {
   return (
     <div className="modal-overlay">
       <div className="modal">
@@ -43,7 +43,7 @@ const UploadProjectModal = ({ formData, onChange, onFileChange, onClose, onSubmi
             required
           />
 
-          <button type="submit" className="btn btn-success">Upload Project</button>
+          <button type="submit" className="btn btn-success" disabled={isUploading}> {isUploading ? <span className='spinner'></span> : "Upload Project"}</button>
           <button type="button" className="btn btn-secondary" onClick={onClose}>Cancel</button>
         </form>
       </div>

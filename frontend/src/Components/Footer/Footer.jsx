@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="footer-grid">
           {/* Brand & Description */}
           <div className="footer-brand">
-            <h3 className="footer-title">Abhyeti Constructions</h3>
+            <h3 className="footer-title">Abhyeti Construction Private Limited</h3>
             <p className="footer-description">
               Building excellence with innovation and traditional craftsmanship. 
               Your trusted partner for all construction needs.
@@ -24,10 +24,9 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-subtitle">Services</h4>
             <ul className="footer-list">
-              <li>Residential Construction</li>
-              <li>Commercial Projects</li>
-              <li>Infrastructure Development</li>
-              <li>Renovation Services</li>
+              <li>Road Construction</li>
+              <li>Bridge Construction</li>
+              <li>Building Construction</li>
             </ul>
           </div>
 
@@ -35,16 +34,16 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-subtitle">Contact Info</h4>
             <ul className="footer-list">
-              <li>+91 98765 43210</li>
-              <li>info@abhyeticonstructions.com</li>
-              <li>123 Construction Avenue</li>
-              <li>Building City, State 12345</li>
+              <li>+91 9158220313</li>
+              <li>abhyeticonstruction3378@gmail.com</li>
+              <li>Bella Vista waddo, Sirsaim, Thivim </li>
+              <li>Berdez, North-Goa, 403502</li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>© 2024 Abhyeti Constructions. All rights reserved.</p>
+          <p>© 2025 Abhyeti Constructions. All rights reserved.</p>
         </div>
       </div>
     </footer>
