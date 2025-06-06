@@ -1,6 +1,7 @@
 # === FRONTEND ===
 frontend/node_modules/
 frontend/dist/
+frontend/build/
 frontend/.env
 frontend/.env.local
 frontend/.vite/
@@ -11,6 +12,7 @@ frontend/tsconfig.tsbuildinfo
 backend/node_modules/
 backend/.env
 backend/dist/
+backend/build/
 backend/.DS_Store
 
 # Common
