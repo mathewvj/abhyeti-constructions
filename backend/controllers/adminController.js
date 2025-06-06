@@ -38,7 +38,7 @@ exports.requestResetPassword = async(req, res) =>{
       { expiresIn: "1h" }
     );
 
-    const resetUrl = `http://localhost:5173/reset-password/${resetToken}`;
+    const resetUrl = `https://abhyeticonstruction.netlify.app/reset-password/${resetToken}`;
 
     const transporter = nodemailer.createTransport({
       service: "Gmail",
