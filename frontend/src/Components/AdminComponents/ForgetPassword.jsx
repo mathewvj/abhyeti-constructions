@@ -12,7 +12,7 @@ const ForgetPassword = ({ onClose }) =>{
         e.preventDefault()
         setIsUploading(true)
         try {
-            await axios.post("http://localhost:5000/api/admin/request-reset-password",{ email })
+            await axios.post("https://abhyeti-constructions-backend.onrender.com/api/admin/request-reset-password",{ email })
             setMessage("If the email exists, a reset link has been sent")
             setError(null)
         } catch (error) {

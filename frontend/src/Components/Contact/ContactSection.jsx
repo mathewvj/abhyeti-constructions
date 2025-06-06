@@ -48,7 +48,7 @@ const ContactSection = () => {
     }
 
     try {
-      await axios.post(`http://localhost:5000/api/contact/send`, formData);
+      await axios.post(`https://abhyeti-constructions-backend.onrender.com/api/contact/send`, formData);
       alert("Thank you! We'll get back to you soon.");
       setFormData({ name: "", email: "", phone: "", message: "" });
       setErrors({});

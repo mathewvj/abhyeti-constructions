@@ -64,7 +64,7 @@ const AdminPanel = () => {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/projects", {
+      const res = await axios.get("https://abhyeti-constructions-backend.onrender.com/api/projects", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -80,7 +80,7 @@ const AdminPanel = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     try {
-      const res = await axios.post("http://localhost:5000/api/admin/login", {
+      const res = await axios.post("https://abhyeti-constructions-backend.onrender.com/api/admin/login", {
         email,
         password,
       });
@@ -107,7 +107,7 @@ const AdminPanel = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/projects/project-upload",
+        "https://abhyeti-constructions-backend.onrender.com/api/projects/project-upload",
         data,
         {
           headers: {
@@ -166,7 +166,7 @@ const AdminPanel = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/projects/${editingProject._id}`,
+        `https://abhyeti-constructions-backend.onrender.com/api/projects/${editingProject._id}`,
         data,
         {
           headers: {
@@ -194,7 +194,7 @@ const AdminPanel = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:5000/api/projects/${id}`, {
+      await axios.delete(`https://abhyeti-constructions-backend.onrender.com/api/projects/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
