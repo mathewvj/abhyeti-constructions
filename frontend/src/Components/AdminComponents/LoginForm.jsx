@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ForgetPassword from './ForgetPassword';
 import './LoginForm.css'
 
-const LoginForm = ({ onLogin }) => {
+const LoginForm = ({ onLogin, loginButt }) => {
     const [showForgotPassword, setShowForgotPassword ] = useState(false)
   return (
     
@@ -31,8 +31,8 @@ const LoginForm = ({ onLogin }) => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Login to Dashboard
+        <button type="submit" className="btn btn-primary" disabled={loginButt}>
+          {loginButt ? <span className='spinner'></span> : "Login To Dashboard"}
         </button>
         <button className="btn btn-primary" onClick={()=>setShowForgotPassword(true)}>
             Reset password

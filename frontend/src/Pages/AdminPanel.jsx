@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 const AdminPanel = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loginButt, setLoginButt] = useState(false)
   const [token, setToken] = useState("");
   const [projects, setProjects] = useState([]);
   const [editingProject, setEditingProject] = useState(null);
@@ -77,6 +78,7 @@ const AdminPanel = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoginButt(true)
     const email = e.target.email.value;
     const password = e.target.password.value;
     try {
@@ -89,6 +91,8 @@ const AdminPanel = () => {
       localStorage.setItem("adminToken", res.data.token);
     } catch (error) {
       alert("login failed");
+    }finally{
+      setLoginButt(false)
     }
   };
 
@@ -214,7 +218,7 @@ const AdminPanel = () => {
     navigate("/");
   };
 
-  if (!isLoggedIn) return <LoginForm onLogin={handleLogin} />;
+  if (!isLoggedIn) return <LoginForm onLogin={handleLogin} loginButt={loginButt} />;
 
   return (
     <div className="admin-container">
