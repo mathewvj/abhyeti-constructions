@@ -4,6 +4,7 @@ import ContactSection from "../Components/Contact/ContactSection";
 import FaqSection from "../Components/Faq/FaqSection";
 import HeroSection from "../Components/Hero/HeroSection";
 import ServiceSection from "../Components/Service/ServiceSection";
+import axios from 'axios'
 
 const HomePage = ({ aboutRef, servicesRef, contactRef, faqRef }) => {
 
@@ -14,7 +15,6 @@ const HomePage = ({ aboutRef, servicesRef, contactRef, faqRef }) => {
   const fetchProjects = async() =>{
     try {
       await axios.get("https://abhyeti-constructions-backend.onrender.com/api/projects")
-
     } catch (error) {
       console.error("failed to fetch projects", error)
     }
