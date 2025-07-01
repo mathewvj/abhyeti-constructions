@@ -34,7 +34,7 @@ const LoginForm = ({ onLogin, loginButt }) => {
         <button type="submit" className="btn btn-primary" disabled={loginButt}>
           {loginButt ? <span className='spinner'></span> : "Login To Dashboard"}
         </button>
-        <button className="btn btn-primary" onClick={()=>setShowForgotPassword(true)}>
+        <button type='button' className="btn btn-primary" onClick={()=>setShowForgotPassword(true)}>
             Reset password
         </button>
       </form>

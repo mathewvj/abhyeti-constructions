@@ -25,7 +25,7 @@ const ForgetPassword = ({ onClose }) =>{
 
     return (
         <div className="forgot-password-modal">
-      <button onClick={onClose}>Close</button>
+      <button type="button" onClick={onClose}>Close</button>
       <h2>Forgot Password</h2>
       {message && <p style={{ color: "green" }}>{message}</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
